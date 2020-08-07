@@ -1,0 +1,346 @@
+******************************************************************************
+                  TI ARM Linker PC v18.12.2                    
+******************************************************************************
+>> Linked Tue Jul 28 23:28:35 2020
+
+OUTPUT FILE NAME:   <RF_IoT.out>
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 000018fd
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  FLASH                 00000000   00040000  00001960  0003e6a0  R  X
+  SRAM                  20000000   00008000  00000200  00007e00  RW X
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00001960   00001960    r-x
+  00000000    00000000    0000026c   0000026c    r-- .intvecs
+  0000026c    0000026c    000016f4   000016f4    r-x .text
+20000000    20000000    00000200   00000000    rw-
+  20000000    20000000    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    0000026c     
+                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+
+.text      0    0000026c    000016f4     
+                  0000026c    00000b30     nrf24l01.obj (.text)
+                  00000d9c    000007c0     gpio.obj (.text)
+                  0000155c    0000017c     uart0.obj (.text)
+                  000016d8    00000118     spi0.obj (.text)
+                  000017f0    0000010c     main.obj (.text)
+                  000018fc    0000002c     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs:_c_int00_noinit_noargs)
+                  00001928    00000024     wait.obj (.text)
+                  0000194c    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
+                  00001958    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  0000195c    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.cinit     0    00000000    00000000     UNINITIALIZED
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.stack     0    20000000    00000200     UNINITIALIZED
+                  20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  20000004    000001fc     --HOLE--
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       nrf24l01.obj                   2864   0         0      
+       gpio.obj                       1984   0         0      
+       tm4c123gh6pm_startup_ccs.obj   12     620       0      
+       uart0.obj                      380    0         0      
+       spi0.obj                       280    0         0      
+       main.obj                       268    0         0      
+       wait.obj                       36     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         5824   620       0      
+                                                              
+    C:\ti\ccs910\ccs\tools\compiler\ti-cgt-arm_18.12.2.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       boot_cortex_m.c.obj            44     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         52     0         0      
+                                                              
+       Stack:                         0      0         512    
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   5876   620       512    
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                            
+-------   ----                            
+0000195d  C$$EXIT                         
+00001785  DisableCS                       
+0000177d  EnableCS                        
+0000194d  ResetISR                        
+20000200  __STACK_END                     
+00000200  __STACK_SIZE                    
+20000200  __STACK_TOP                     
+ffffffff  __TI_pprof_out_hndl             
+ffffffff  __TI_prof_data_size             
+ffffffff  __TI_prof_data_start            
+00000000  __TI_static_base__              
+ffffffff  __binit__                       
+ffffffff  __c_args__                      
+UNDEFED   __mpu_init                      
+20000000  __stack                         
+000018fd  _c_int00_noinit_noargs          
+00001959  _system_pre_init                
+0000195d  abort                           
+ffffffff  binit                           
+000013cd  disablePinInterrupt             
+00001105  disablePinPulldown              
+000010bd  disablePinPullup                
+00000e59  disablePort                     
+000013a9  enablePinInterrupt              
+000010e1  enablePinPulldown               
+0000108f  enablePinPullup                 
+00000d9d  enablePort                      
+00000000  g_pfnVectors                    
+00001417  getPinValue                     
+000014cd  getPortValue                    
+00001665  getcUart0                       
+000017f1  initHw1                         
+000016d9  initSpi0                        
+0000155d  initUart0                       
+00001679  kbhitUart0                      
+00001831  main                            
+000009ff  nrf24l01_aa_disable             
+000009b5  nrf24l01_aa_enable              
+00000981  nrf24l01_aa_enabled             
+00000b11  nrf24l01_cd_active              
+0000080b  nrf24l01_ce_pin_active          
+000007fb  nrf24l01_clear_ce               
+00000811  nrf24l01_clear_csn              
+00000c87  nrf24l01_clear_flush            
+00000941  nrf24l01_clear_plos_cnt         
+00000959  nrf24l01_clear_plos_cnt_param   
+0000082d  nrf24l01_csn_pin_active         
+00000d07  nrf24l01_execute_command        
+00000bb5  nrf24l01_fifo_rx_empty          
+00000b9b  nrf24l01_fifo_rx_full           
+00000b81  nrf24l01_fifo_tx_empty          
+00000b67  nrf24l01_fifo_tx_full           
+00000b4d  nrf24l01_fifo_tx_reuse          
+000007b9  nrf24l01_flush_rx               
+000007a9  nrf24l01_flush_tx               
+00000c97  nrf24l01_get_all_registers      
+0000096b  nrf24l01_get_arc_cnt            
+000008c1  nrf24l01_get_config             
+00000b2d  nrf24l01_get_fifo_status        
+00000917  nrf24l01_get_observe_tx         
+00000929  nrf24l01_get_plos_cnt           
+000008e5  nrf24l01_get_rf_ch              
+00000c65  nrf24l01_get_rx_pipe            
+00000c71  nrf24l01_get_rx_pipe_from_status
+00000897  nrf24l01_get_rx_pw              
+00000b3f  nrf24l01_get_status             
+0000026d  nrf24l01_initialize             
+00000461  nrf24l01_initialize_debug       
+000004fb  nrf24l01_initialize_debug_lite  
+00000c15  nrf24l01_irq_clear_all          
+00000c51  nrf24l01_irq_clear_max_rt       
+00000c29  nrf24l01_irq_clear_rx_dr        
+00000c3d  nrf24l01_irq_clear_tx_ds        
+00000c03  nrf24l01_irq_max_rt_active      
+00000bcf  nrf24l01_irq_pin_active         
+00000bdf  nrf24l01_irq_rx_dr_active       
+00000bf1  nrf24l01_irq_tx_ds_active       
+000007d9  nrf24l01_nop                    
+000005d9  nrf24l01_power_down             
+00000609  nrf24l01_power_down_param       
+00000535  nrf24l01_power_up               
+0000058f  nrf24l01_power_up_param         
+0000073b  nrf24l01_read_register          
+00000785  nrf24l01_read_rx_payload        
+000007c9  nrf24l01_reuse_tx_pl            
+000006b1  nrf24l01_rx_active_to_standby   
+00000ac7  nrf24l01_rx_pipe_disable        
+00000a7d  nrf24l01_rx_pipe_enable         
+00000a49  nrf24l01_rx_pipe_enabled        
+000006a9  nrf24l01_rx_standby_to_active   
+0000062b  nrf24l01_set_as_rx              
+00000673  nrf24l01_set_as_rx_param        
+000006b9  nrf24l01_set_as_tx              
+000006e9  nrf24l01_set_as_tx_param        
+00000803  nrf24l01_set_ce                 
+000008d3  nrf24l01_set_config             
+0000081f  nrf24l01_set_csn                
+000008f7  nrf24l01_set_rf_ch              
+00000845  nrf24l01_set_rx_addr            
+00000869  nrf24l01_set_rx_pw              
+00000833  nrf24l01_set_tx_addr            
+00000d43  nrf24l01_spi_send_read          
+000007e9  nrf24l01_transmit               
+00000719  nrf24l01_write_register         
+00000759  nrf24l01_write_tx_payload       
+0000161d  putcUart0                       
+00001639  putsUart0                       
+00001777  readSpi0                        
+00000fc3  selectPinAnalogInput            
+00000f75  selectPinDigitalInput           
+000012df  selectPinInterruptBothEdges     
+0000128f  selectPinInterruptFallingEdge   
+00001335  selectPinInterruptHighLevel     
+0000136f  selectPinInterruptLowLevel      
+0000123f  selectPinInterruptRisingEdge    
+00000f27  selectPinOpenDrainOutput        
+00000ed9  selectPinPushPullOutput         
+0000112d  setPinAuxFunction               
+00001013  setPinCommitControl             
+000013f1  setPinValue                     
+00001449  setPortValue                    
+000015f1  setUart0BaudRate                
+0000178d  spi1_send_read_byte             
+00001929  waitMicrosecond                 
+0000175f  writeSpi0                       
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                            
+-------   ----                            
+00000000  __TI_static_base__              
+00000000  g_pfnVectors                    
+00000200  __STACK_SIZE                    
+0000026d  nrf24l01_initialize             
+00000461  nrf24l01_initialize_debug       
+000004fb  nrf24l01_initialize_debug_lite  
+00000535  nrf24l01_power_up               
+0000058f  nrf24l01_power_up_param         
+000005d9  nrf24l01_power_down             
+00000609  nrf24l01_power_down_param       
+0000062b  nrf24l01_set_as_rx              
+00000673  nrf24l01_set_as_rx_param        
+000006a9  nrf24l01_rx_standby_to_active   
+000006b1  nrf24l01_rx_active_to_standby   
+000006b9  nrf24l01_set_as_tx              
+000006e9  nrf24l01_set_as_tx_param        
+00000719  nrf24l01_write_register         
+0000073b  nrf24l01_read_register          
+00000759  nrf24l01_write_tx_payload       
+00000785  nrf24l01_read_rx_payload        
+000007a9  nrf24l01_flush_tx               
+000007b9  nrf24l01_flush_rx               
+000007c9  nrf24l01_reuse_tx_pl            
+000007d9  nrf24l01_nop                    
+000007e9  nrf24l01_transmit               
+000007fb  nrf24l01_clear_ce               
+00000803  nrf24l01_set_ce                 
+0000080b  nrf24l01_ce_pin_active          
+00000811  nrf24l01_clear_csn              
+0000081f  nrf24l01_set_csn                
+0000082d  nrf24l01_csn_pin_active         
+00000833  nrf24l01_set_tx_addr            
+00000845  nrf24l01_set_rx_addr            
+00000869  nrf24l01_set_rx_pw              
+00000897  nrf24l01_get_rx_pw              
+000008c1  nrf24l01_get_config             
+000008d3  nrf24l01_set_config             
+000008e5  nrf24l01_get_rf_ch              
+000008f7  nrf24l01_set_rf_ch              
+00000917  nrf24l01_get_observe_tx         
+00000929  nrf24l01_get_plos_cnt           
+00000941  nrf24l01_clear_plos_cnt         
+00000959  nrf24l01_clear_plos_cnt_param   
+0000096b  nrf24l01_get_arc_cnt            
+00000981  nrf24l01_aa_enabled             
+000009b5  nrf24l01_aa_enable              
+000009ff  nrf24l01_aa_disable             
+00000a49  nrf24l01_rx_pipe_enabled        
+00000a7d  nrf24l01_rx_pipe_enable         
+00000ac7  nrf24l01_rx_pipe_disable        
+00000b11  nrf24l01_cd_active              
+00000b2d  nrf24l01_get_fifo_status        
+00000b3f  nrf24l01_get_status             
+00000b4d  nrf24l01_fifo_tx_reuse          
+00000b67  nrf24l01_fifo_tx_full           
+00000b81  nrf24l01_fifo_tx_empty          
+00000b9b  nrf24l01_fifo_rx_full           
+00000bb5  nrf24l01_fifo_rx_empty          
+00000bcf  nrf24l01_irq_pin_active         
+00000bdf  nrf24l01_irq_rx_dr_active       
+00000bf1  nrf24l01_irq_tx_ds_active       
+00000c03  nrf24l01_irq_max_rt_active      
+00000c15  nrf24l01_irq_clear_all          
+00000c29  nrf24l01_irq_clear_rx_dr        
+00000c3d  nrf24l01_irq_clear_tx_ds        
+00000c51  nrf24l01_irq_clear_max_rt       
+00000c65  nrf24l01_get_rx_pipe            
+00000c71  nrf24l01_get_rx_pipe_from_status
+00000c87  nrf24l01_clear_flush            
+00000c97  nrf24l01_get_all_registers      
+00000d07  nrf24l01_execute_command        
+00000d43  nrf24l01_spi_send_read          
+00000d9d  enablePort                      
+00000e59  disablePort                     
+00000ed9  selectPinPushPullOutput         
+00000f27  selectPinOpenDrainOutput        
+00000f75  selectPinDigitalInput           
+00000fc3  selectPinAnalogInput            
+00001013  setPinCommitControl             
+0000108f  enablePinPullup                 
+000010bd  disablePinPullup                
+000010e1  enablePinPulldown               
+00001105  disablePinPulldown              
+0000112d  setPinAuxFunction               
+0000123f  selectPinInterruptRisingEdge    
+0000128f  selectPinInterruptFallingEdge   
+000012df  selectPinInterruptBothEdges     
+00001335  selectPinInterruptHighLevel     
+0000136f  selectPinInterruptLowLevel      
+000013a9  enablePinInterrupt              
+000013cd  disablePinInterrupt             
+000013f1  setPinValue                     
+00001417  getPinValue                     
+00001449  setPortValue                    
+000014cd  getPortValue                    
+0000155d  initUart0                       
+000015f1  setUart0BaudRate                
+0000161d  putcUart0                       
+00001639  putsUart0                       
+00001665  getcUart0                       
+00001679  kbhitUart0                      
+000016d9  initSpi0                        
+0000175f  writeSpi0                       
+00001777  readSpi0                        
+0000177d  EnableCS                        
+00001785  DisableCS                       
+0000178d  spi1_send_read_byte             
+000017f1  initHw1                         
+00001831  main                            
+000018fd  _c_int00_noinit_noargs          
+00001929  waitMicrosecond                 
+0000194d  ResetISR                        
+00001959  _system_pre_init                
+0000195d  C$$EXIT                         
+0000195d  abort                           
+20000000  __stack                         
+20000200  __STACK_END                     
+20000200  __STACK_TOP                     
+ffffffff  __TI_pprof_out_hndl             
+ffffffff  __TI_prof_data_size             
+ffffffff  __TI_prof_data_start            
+ffffffff  __binit__                       
+ffffffff  __c_args__                      
+ffffffff  binit                           
+UNDEFED   __mpu_init                      
+
+[125 symbols]
