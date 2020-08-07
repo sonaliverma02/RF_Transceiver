@@ -3,7 +3,8 @@
  *
  *  Created on: 22-Jul-2020
  *      Author: Sonali Verma
- *      //Configuration
+ *      //nrf module
+ *      // Configuration
     //GPIO_PA2_SSI0CLK
         //GPIO_PA4_SSI0RX
         //GPIO_PA5_SSI0TX
