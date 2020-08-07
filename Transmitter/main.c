@@ -3,8 +3,7 @@
  *
  *  Created on: 22-Jul-2020
  *      Author: Sonali Verma
- *      //nrf module
- *      // Configuration
+ *      //Configuration
     //GPIO_PA2_SSI0CLK
         //GPIO_PA4_SSI0RX
         //GPIO_PA5_SSI0TX
@@ -54,42 +53,25 @@ void ToggleLED()
 }
 int main(void)
 {
-    // Configure HW to work with 16 MHz XTAL, PLL enabled, system clock of 40 MHz
-         //SYSCTL_RCC_R = SYSCTL_RCC_XTAL_16MHZ | SYSCTL_RCC_OSCSRC_MAIN | SYSCTL_RCC_USESYSDIV | (4 << SYSCTL_RCC_SYSDIV_S);
 
-         // Set GPIO ports to use APB (not needed since default configuration -- for clarity)
-         // Note UART on port A must use APB
-     //    SYSCTL_GPIOHBCTL_R = 0;
-
-    // Enable GPIO port A C D F E peripherals
-        /*            SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOA;
-
-                    // Configure Red Orange Yellow LEDs (off-board) PA2 PA3 PA4
-                        GPIO_PORTA_DIR_R |= FSS_MASK;  // bits 2,3,4 are output, other pins are inputs
-                        GPIO_PORTA_DR2R_R |= FSS_MASK;  // set drive strength to 2mA (not needed since default configuration -- for clarity)
-                        GPIO_PORTA_DEN_R |= FSS_MASK;  // enable LEDs
-
-                        CS = 0;
-
-                        CS = 1;*/
 
     initHw1();
     initSpi0();
     // Setup UART0
           initUart0();
           setUart0BaudRate(115200, 40e6);
-          nrf24l01_initialize_debug(false, 1, false); //initialize the 24L01 to the debug configuration as TX,
+          nrf24l01_initialize_debug(false, 3, false); //initialize the 24L01 to the debug configuration as TX,
     //1 data byte, and auto-ack disabled
-    unsigned char data; //register to hold letter sent and received
+    unsigned char* data; //register to hold letter sent and received
     unsigned int count; //counter for for loop
     while(1)
     {
         //while(kbhitUart0())
 
           // data = getcUart0();
-        data = 'h';
+        data = "hey";
            // spi1_send_read_byte(data);
-             nrf24l01_write_tx_payload(&data, 1, true); //transmit received char over RF
+             nrf24l01_write_tx_payload(data, strlen((const char*)data), true); //transmit received char over RF
             //wait until the packet has been sent or the maximum number of retries has been reached
         while(  !(  nrf24l01_irq_pin_active() && nrf24l01_irq_tx_ds_active()  )   );
 
@@ -105,17 +87,17 @@ int main(void)
                 //  to go to the UART to "?".  If neither of these is true, keep looping.
                 if((nrf24l01_irq_pin_active()&& nrf24l01_irq_rx_dr_active())) //
                 {
-                    nrf24l01_read_rx_payload(&data, 1); //get the payload into data
+                    nrf24l01_read_rx_payload(data, strlen((const char*)data)); //get the payload into data
                     break;
                 }
 
                 //if loop is on its last iteration, assume packet has been lost.
                 if(count == 19999)
-                    data = '?';
+                    data = "??";
             }
 
             nrf24l01_irq_clear_all(); //clear interrupts again
-           putcUart0(data); //print the received data (or ? if none) to the screen
+           putsUart0((char*)data); //print the received data (or ? if none) to the screen
 
             waitMicrosecond(130); //wait for receiver to come from standby to RX
             nrf24l01_set_as_tx(); //resume normal operation as a TX
